@@ -1,5 +1,3 @@
-#include "Node.h"
-#include "ATM.h"
 #include "Deque.h"
 
 void InitDeque(Deque *dq){			// 덱의 초기값 설정 
@@ -76,4 +74,30 @@ Customer rear_pop(Deque *dq){
 	free(rear->customer);
 	free(rear);
 	return ct;
+}
+
+void DelNode(Deque *dq, Node *target){
+	if(dq->front == target && dq->rear == target){
+		dq->front = NULL;
+		dq->rear = NULL;
+	}
+	else if(dq->front == target){
+		target->nxt->prv = NULL;
+		dq->front = target->nxt;
+		target->nxt = NULL;
+	}
+	else if(dq->rear == target){
+		target->prv->nxt = NULL;
+		dq->rear = target->prv;
+		target->prv = NULL;
+	}
+	else{
+		target->nxt->prv = target->prv;
+		target->prv->nxt = target->nxt;
+		target->nxt = NULL;
+		target->prv = NULL;
+	}
+	free(target->customer);
+	free(target);
+	dq->atm->size--;
 }

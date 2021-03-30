@@ -1,5 +1,8 @@
 #ifndef __Deque_H_
 #define __Deque_H_
+#include "Node.h"
+#include "ATM.h"
+#include "Customer.h"
 
 typedef struct{
 	ATM *atm;			// ATM기의 정보 
@@ -13,5 +16,6 @@ void front_push(Deque *dq, Customer ct);	// 덱의 앞에 요소를 넣는 함수
 void rear_push(Deque *dq, Customer ct);	// 덱의 뒤에 요소를 넣는 함수 
 Customer front_pop(Deque *dq);				// 덱의 앞에 요소를 반환하고 삭제하는 함수 
 Customer rear_pop(Deque *dq);					// 덱의 뒤에 요소를 반환하고 삭제하는 함수 
+void DelNode(Deque *dq, Node *target);
 
 #endif
