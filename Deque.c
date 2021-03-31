@@ -10,9 +10,8 @@ int IsEmpty(Deque *dq){
 	return dq->atm->size == 0;
 }
 
-void front_push(Deque *dq, Customer ct){
+void front_push(Deque *dq, Customer *ct){
 	Node *NewNode = (Node *)malloc(sizeof(Node));		// 새로운 노드를 생성하고 동적할당 
-	NewNode->customer = (Customer *)malloc(sizeof(Customer));	// 그 노드에 손님 정보 동적할당 
 	NewNode->customer = ct;		// 손님 정보 입력 
 	if(IsEmpty(dq) == 1){
 		dq->front = NewNode;
@@ -28,9 +27,8 @@ void front_push(Deque *dq, Customer ct){
 	dq->atm->size++;
 }
 
-void rear_push(Deque *dq, Customer ct){
+void rear_push(Deque *dq, Customer *ct){
 	Node *NewNode = (Node *)malloc(sizeof(Node));
-	NewNode->customer = (Customer *)malloc(sizeof(Customer));
 	NewNode->customer = ct;
 	if(IsEmpty(dq) == 1){
 		dq->front = NewNode;
@@ -48,7 +46,7 @@ void rear_push(Deque *dq, Customer ct){
 
 Customer front_pop(Deque *dq){
 	Node *front = dq->front;
-	Customer ct = front->customer;
+	Customer ct = CustomerInfoCopy(front->customer);
 	if(dq->front->nxt == NULL)
 		dq->rear = dq->front = NULL;
 	else{
@@ -63,7 +61,7 @@ Customer front_pop(Deque *dq){
 
 Customer rear_pop(Deque *dq){
 	Node *rear = dq->rear;
-	Customer ct = rear->customer;
+	Customer ct = CustomerInfoCopy(rear->customer);
 	if(dq->rear->prv == NULL)
 		dq->rear = dq->front = NULL;
 	else{
