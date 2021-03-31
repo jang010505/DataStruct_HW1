@@ -93,6 +93,5 @@ int main(){
 		}
 		free(dq[i].atm);
 	}
-	printf("\n-1");
 	return 0;
 }
