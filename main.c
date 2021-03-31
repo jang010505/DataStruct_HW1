@@ -91,5 +91,8 @@ int main(){
 			free(front);
 			front = tmp;
 		}
+		free(dq[i].atm);
 	}
+	printf("\n-1");
+	return 0;
 }
