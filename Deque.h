@@ -17,6 +17,6 @@ void front_push(Deque *dq, Customer *ct);	// 덱의 앞에 요소를 넣는 함수
 void rear_push(Deque *dq, Customer *ct);	// 덱의 뒤에 요소를 넣는 함수 
 Customer front_pop(Deque *dq);				// 덱의 앞에 요소를 반환하고 삭제하는 함수 
 Customer rear_pop(Deque *dq);					// 덱의 뒤에 요소를 반환하고 삭제하는 함수 
-void DelNode(Deque *dq, Node *target);
+void DelNode(Deque *dq, Node *target);		// 노드를 지우는 함수  
 
 #endif

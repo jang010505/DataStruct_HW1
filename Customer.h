@@ -7,6 +7,6 @@ typedef struct{		// 손님 구조체
 	int vip;				// vip 여부 vip일 시 1, 아닐 시 0 
 }Customer;
 
-Customer CustomerInfoCopy(Customer *copy_ct);
+Customer CustomerInfoCopy(Customer *copy_ct);		// 손님정보를 입력하는 함수 
 
 #endif
