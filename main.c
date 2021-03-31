@@ -37,8 +37,6 @@ int main(){
 		else					// VIP가 아니라면 덱의 제일 뒤에 삽입 
 			rear_push(&dq[order], ct);
 		
-		// printf("%d %d : %d\n", H, M, dq[0].atm->size + dq[1].atm->size + dq[2].atm->size);
-		
 		for(int i = 0; i < ATM_SIZE; i++){
 			if(IsEmpty(&dq[i]) == 0){		// 만약 i번 ATM기에 줄이 있다면 
 				if(use_time[i] == 0){	// 만약 i번 ATM기가 사용 중이지 않다면 
@@ -57,7 +55,6 @@ int main(){
 			}
 		}
 		
-		
 		M++;			// 1분 증가 
 		H += M/60;	// 만약 60분이면 1시간 증가 아니라면 0증가 
 		M %= 60;		// M이 60이면 0으로 바꿈 
@@ -74,6 +71,25 @@ int main(){
 					NowNode = TmpNode;
 				}
 			}
+		}
+	}
+	int count = 0, wait = 0, wait_customer = 0;
+	for(int i = 0; i < ATM_SIZE; i++){
+		count += dq[i].atm->use_customer;
+		wait += dq[i].atm->waiting_time;
+		wait_customer += dq[i].atm->size;
+	}
+	printf("업무를 본 고객 : %d\n", count);
+	printf("고객들이 기다린 시간 평균 : %f 분\n", wait/120.0f);
+	printf("현재 기다리는 고객의 수 : %d", wait_customer);
+	for(int i=0;i<3;i++){
+		Node *front = dq[i].front;
+		Node *tmp;
+		while(front !=NULL){
+			tmp = front->nxt;
+			free(front->customer);
+			free(front);
+			front = tmp;
 		}
 	}
 }

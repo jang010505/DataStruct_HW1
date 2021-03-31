@@ -2,3 +2,5 @@
 *.layout
 *.o
 *.exe
+*.out
+*.win
