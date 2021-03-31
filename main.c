@@ -47,13 +47,13 @@ int main(){
 						printf("VIP ");				
 					printf("%d시 %d분 - %d번 고객(%d분 소요)이 %d번 ATM에서 서비스를 시작함\n\n", H, M, tmp.number, tmp.time, i + 1);
 					use_time[i] = tmp.time;	// i번 ATM기 사용시간 업데이트 
-					//count++;						// 사용자 수 증가 
+					dq[i].atm->use_customer++;
 				}
 			}
 			
 			if(use_time[i] > 0){			// i번 ATM기가 사용 중이라면 
 				use_time[i]--;				// 사용 시간 감소 
-				// wait += size(&dq[i]);	// i번 ATM기 줄 길이만큼 증가 
+				dq[i].atm->waiting_time += dq[i].atm->size;	// i번 ATM기 줄 길이만큼 증가 
 			}
 		}
 		
@@ -69,6 +69,7 @@ int main(){
 					TmpNode = NowNode->nxt;
 					if(is_prime(NowNode->customer->number)){
 						DelNode(&dq[i], NowNode);
+						dq[i].atm->leaveCustomer++;
 					}
 					NowNode = TmpNode;
 				}
