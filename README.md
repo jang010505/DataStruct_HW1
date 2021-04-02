@@ -81,4 +81,4 @@ typedef struct Node{
 ```
 
 
-![Node_Deque](./image/Node_deque.png)
+![Node_Deque](./image/Node_Deque.png)
