@@ -68,17 +68,69 @@ VIP가 아닌 일반 손님이 ATM기를 사용할려면 줄의 제일 끝에 서서 기다려야 한다. 즉 
 typedef struct Deque{
     Node *front;
     Node *rear;
-    //...
+    ...
 }Deque;
 ```
 ```c
 // Node
 typedef struct Node{
-    Node *prev;
-    Node *next;
-    //...
+    struct Node *prev;      // 이중 연결 리스트를 사용할 때
+    struct Node *next;
+    ...
 }Node;
 ```
 
+<details>
+<summary>덱의 front와 rear가 하는 일은?</summary>
+<div markdown="1">
+연결리스트로 구현된 선형 자료에서 자료의 양 끝에 새로운 자료를 삽입 할려면 제일 앞 혹은 제일 뒤에 주소 값을 알고 있어야 한다. 즉 덱의 *front와 *rear에 각각 연결리스트의 제일 앞과 뒤의 주소값을 저장을 해 접근이 용이하도록 하였다.
+</div>
+</details>
+</br>
+</br>
 
 ![Node_Deque](./image/Node_Deque.png)
+
+</br>
+
+#### 2. 구조체 구현
+Node에 바로 정보를 넣어도 되지만 따로 구조체로 묶어서 표현하는 것이 코드 가독성에 좋다. 필자의 코드를 예시로 들면 유사도가 높아질 위험이 있기에 일부만 노출.
+
+<details>
+<summary>EX1</summary>
+<div markdown="1">
+
+
+Node에 바로 정보를 넣은 경우
+```c
+typedef struct Node{
+    struct Node *prev;
+    struct Node *next;
+    int number;
+    int vip;
+    ...
+}Node;
+```
+</br>
+Customer이라는 구조체를 만들고 Node에 Customer이라는 구조체 넣기
+
+```c
+typedef struct Node{
+    struct Node *prev;
+    struct Node *next;
+    Customer customer;
+}Node;
+
+
+typedef struct Customer{
+    int number;
+    int vip;
+    ...
+}Customer;
+```
+
+</div>
+</details>
+
+</br>
+
